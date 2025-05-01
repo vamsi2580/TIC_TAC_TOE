@@ -58,6 +58,6 @@ function checkWinner() {
             }
         }
     }
-    
+    console.log(count);
     
 }
