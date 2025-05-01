@@ -40,18 +40,24 @@ function call(btn){
 
 buttons.forEach(call);
 rstbtn.addEventListener("click",reset);
-
+let count=0;
 function checkWinner() {
+    count++;
     for(let patterns of winPatterns){
         let val1=buttons[patterns[0]].innerText;
         let val2=buttons[patterns[1]].innerText;
         let val3=buttons[patterns[2]].innerText;
-    
+        
     if (val1!="" && val2!="" && val3!=""){
         if (val1==val2 && val2==val3){
             console.log("winner");
             congra.innerText=`Congratulations ${val1}`;
             }
+            else if(count==9){
+                congra.innerText="Game Draw";
+            }
         }
     }
+    
+    
 }
