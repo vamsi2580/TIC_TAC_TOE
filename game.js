@@ -1,4 +1,5 @@
 let turn = false;
+let count=0;
 const winPatterns = [
     [0,1,2],
     [0,4,8],
@@ -18,6 +19,7 @@ function reset(){
         button.disabled=false;
         turn=false;
         congra.innerText="";
+        count=0;
     });
 }
 function btclick(event){
@@ -40,7 +42,7 @@ function call(btn){
 
 buttons.forEach(call);
 rstbtn.addEventListener("click",reset);
-let count=0;
+
 function checkWinner() {
     count++;
     for(let patterns of winPatterns){
@@ -52,12 +54,15 @@ function checkWinner() {
         if (val1==val2 && val2==val3){
             console.log("winner");
             congra.innerText=`Congratulations ${val1}`;
-            }
-            else if(count==9){
-                congra.innerText="Game Draw";
+            buttons.forEach(button =>{
+                button.disabled=true;
+            });
+            return;
             }
         }
     }
     console.log(count);
-    
+    if(count==9){
+        congra.innerText="Game Draw";
+    }
 }
